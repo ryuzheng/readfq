@@ -1,3 +1,33 @@
+#A fast tool to calculate the sequence number, base number, GC%, Q20%, Q30% of the FASTA/FASTQ file
+
+Modified from [https://github.com/lh3/readfq](https://github.com/lh3/readfq)
+
+##Usage
+
+```
+> python readfq.py < seq.txt
+3        49      24      48.98   83.33   45.83
+```
+
+```
+> cat R1.fastq R2.fastq | python readfq.py
+2199     396960          396960          48.04   64.17   57.3
+```
+##Explain the Output
+```
+#in fastq
+Reads Number  Base Number Quality Number  GC% Q20%  Q30%
+2199     396960          396960          48.04   64.17   57.3
+
+#in fasta
+Reads Number  Base Number  GC%
+2199     396960          48.04
+```
+
+
+The following is the original Readme.
+
+=====
 Readfq is a collection of routines for parsing the FASTA/FASTQ format. It
 seamlessly parses both FASTA and multi-line FASTQ with a simple interface.
 

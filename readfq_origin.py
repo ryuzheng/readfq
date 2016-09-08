@@ -31,24 +31,9 @@ def readfq(fp): # this is a generator function
 
 if __name__ == "__main__":
     import sys
-    n, slen, qlen, GCs, Q20s, Q30s = 0, 0, 0, 0, 0, 0
+    n, slen, qlen = 0, 0, 0
     for name, seq, qual in readfq(sys.stdin):
         n += 1
         slen += len(seq)
         qlen += qual and len(qual) or 0
-        for base in seq:
-            if base in "GCgc":
-                GCs+=1
-        if qlen>0:
-            for quality in qual:
-                if (ord(quality)-33)>=20:
-                    Q20s+=1
-                if (ord(quality)-33)>=30:
-                    Q30s+=1
-    gc=round(float(GCs)/float(slen)*100,2)
-    if qlen>0:
-        q20=round(float(Q20s)/float(qlen)*100,2)
-        q30=round(float(Q30s)/float(qlen)*100,2)
-        print(n, '\t', slen, '\t', qlen, '\t', gc, '\t', q20, '\t', q30)
-    else:
-        print(n, '\t', slen, '\t', gc)
+    print n, '\t', slen, '\t', qlen
